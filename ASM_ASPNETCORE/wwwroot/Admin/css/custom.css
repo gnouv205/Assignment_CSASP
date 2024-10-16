@@ -1,0 +1,122 @@
+.app-sidebar {
+    background-color: white !important;
+}
+
+a {
+    color: #0dcaf0;
+}
+
+    a:hover {
+        color: #0b9fbc;
+    }
+
+.sidebar-wrapper .sidebar-menu > .nav-item.menu-open .nav-link.active:not(:hover) {
+    --lte-sidebar-menu-active-bg: #0dcaf0;
+}
+
+.app-sidebar {
+    --lte-sidebar-hover-bg: #0dcaf0;
+    --lte-sidebar-color: #343a40;
+    --lte-sidebar-hover-color: #fff;
+    --lte-sidebar-active-color: #fff;
+    --lte-sidebar-menu-active-bg: #0dcaf0;
+    --lte-sidebar-menu-active-color: #fff;
+    --lte-sidebar-submenu-bg: transparent;
+    --lte-sidebar-submenu-color: #777;
+    --lte-sidebar-submenu-hover-color: #fff;
+    --lte-sidebar-submenu-hover-bg: #0dcaf0;
+    --lte-sidebar-submenu-active-color: #fff;
+    --lte-sidebar-submenu-active-bg: #0dcaf0;
+    --lte-sidebar-header-color: #31373d;
+}
+
+.dt-paging .page-link.active, .dt-paging .active > .page-link {
+    color: #fff;
+    background-color: #0dcaf0;
+    border-color: #0dcaf0;
+}
+
+.dt-paging .page-link {
+    color: #0dcaf0;
+}
+
+/* custom for bootstrap 5 */
+.form-check.check-secondary .form-check-input {
+    border: 1px solid #6c757d;
+}
+
+    .form-check.check-secondary .form-check-input:checked {
+        background-color: #6c757d !important;
+    }
+
+.form-check.check-success .form-check-input {
+    border: 1px solid #198754;
+}
+
+    .form-check.check-success .form-check-input:checked {
+        background-color: #198754 !important;
+    }
+
+.form-check.check-danger .form-check-input {
+    border: 1px solid #dc3545;
+}
+
+    .form-check.check-danger .form-check-input:checked {
+        background-color: #dc3545 !important;
+    }
+
+.form-check.check-warning .form-check-input {
+    border: 1px solid #ffc107;
+}
+
+    .form-check.check-warning .form-check-input:checked {
+        background-color: #ffc107 !important;
+    }
+
+.form-check.check-info .form-check-input {
+    border: 1px solid #0dcaf0;
+}
+
+    .form-check.check-info .form-check-input:checked {
+        background-color: #0dcaf0 !important;
+    }
+
+.form-check.check-dark .form-check-input {
+    border: 1px solid #212529;
+}
+
+    .form-check.check-dark .form-check-input:checked {
+        background-color: #212529 !important;
+    }
+
+.btn.btn-info, .btn.btn-warning {
+    color: white;
+}
+
+.btn.btn-info:active, .btn.btn-warning:active {
+    color: white;
+}
+
+/* ============= Hide Spinner Box of Number Textfield ===================== */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+/* ============= Hide Spinner Box of Number Textfield ===================== */
+
+.m-l-0 {
+    margin-left: 0px !important;
+}
+.m-l-1 {
+    margin-left: 20px !important;
+}
+.m-l-2 {
+    margin-left: 40px !important;
+}

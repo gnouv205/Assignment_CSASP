@@ -1,0 +1,85 @@
+﻿@model ASM_ASPNETCORE.Models.Product
+
+@{
+    ViewData["Title"] = "AddProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .form-control {
+        width: 100%; /* Đặt chiều rộng cho các ô input */
+        max-width: 600px; /* Giới hạn chiều rộng tối đa nếu cần */
+        margin-bottom: 15px; /* Khoảng cách giữa các ô */
+    }
+
+    .btn-primary {
+        margin-top: 20px; /* Khoảng cách phía trên nút */
+    }
+</style>
+
+
+<h1>AddProduct</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <!-- Đảm bảo sử dụng enctype="multipart/form-data" -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="MA_SANPHAM" class="control-label"></label>
+                <input asp-for="MA_SANPHAM" class="form-control" style="width: 300px;" />
+                <span asp-validation-for="MA_SANPHAM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TEN_SANPHAM" class="control-label"></label>
+                <input asp-for="TEN_SANPHAM" class="form-control" style="width: 300px;" />
+                <span asp-validation-for="TEN_SANPHAM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HINH_SANPHAM" class="control-label"></label>
+                <input asp-for="HINH_SANPHAM" type="file" class="form-control" style="width: 300px;" /> <!-- Input để chọn file -->
+                <span asp-validation-for="HINH_SANPHAM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SOLUONG_SANPHAM" class="control-label"></label>
+                <input asp-for="SOLUONG_SANPHAM" class="form-control" style="width: 300px;" />
+                <span asp-validation-for="SOLUONG_SANPHAM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GIA_SANPHAM" class="control-label"></label>
+                <input asp-for="GIA_SANPHAM" class="form-control" style="width: 300px;" />
+                <span asp-validation-for="GIA_SANPHAM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TINHTRANG_SANPHAM" class="control-label"></label>
+                <input asp-for="TINHTRANG_SANPHAM" class="form-control" style="width: 300px;" />
+                <span asp-validation-for="TINHTRANG_SANPHAM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MOTA_SANPHAM" class="control-label"></label>
+                <input asp-for="MOTA_SANPHAM" class="form-control" style="width: 300px;" />
+                <span asp-validation-for="MOTA_SANPHAM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MA_ADMIN" class="control-label"></label>
+                <input asp-for="MA_ADMIN" class="form-control" style="width: 300px;" />
+                <span asp-validation-for="MA_ADMIN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+

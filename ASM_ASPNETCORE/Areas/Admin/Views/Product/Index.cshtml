@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ASM_ASPNETCORE.Models.Product>
+
+@{
+	ViewData["Title"] = "Product";
+	Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<div class="card card-info card-outline">
+	<div class="card-header">
+		<div class="row">
+			<div class="col-md">
+				@* <h3 class="card-title">Title</h3> *@
+			</div>
+			<div class="col-md-auto">
+				<a asp-area="Admin" asp-controller="Product" asp-action="Create" type="button" class="btn btn-info">
+					<i class="fa-solid fa-plus me-1"></i> Add new
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table id="tbl" class="table">
+				<thead>
+					<tr>
+						<th style="width: 30px"></th>
+						<th>Mã Sản Phẩm</th>
+						<th>Tên Sản Phẩm</th>
+						<th>Ảnh Sản Phẩm</th>
+						<th>Số Lượng</th>
+						<th>Giá</th>
+						<th>Tình trạng</th>
+						<th>Mô tả</th>
+						<th>Mã Admin</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var product in Model)
+					{
+						<tr id="@product.MA_SANPHAM">
+							<td class="text-nowrap bg-light">
+								<a asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-maSP="@product.MA_SANPHAM"
+								   class="me-1 link-success"><i class="fa-solid fa-edit"></i></a>
+
+								<a asp-area="Admin" asp-controller="Product" asp-action="Delete"
+								   asp-route-maSP="@product.MA_SANPHAM" class="link-danger">
+									<i class="fa-solid fa-trash"></i>
+								</a>
+
+							</td>
+
+							<td>@product.MA_SANPHAM</td>
+							<td>@product.TEN_SANPHAM</td>
+							<td>
+								<img src="@product.HINH_SANPHAM" alt="Product Image" style="width: 100px; height: auto;" />
+							</td>
+							<td>@product.SOLUONG_SANPHAM</td>
+							<td>@product.GIA_SANPHAM</td>
+							<td>@product.TINHTRANG_SANPHAM</td>
+							<td>@product.MOTA_SANPHAM</td>
+							<td>@product.MA_ADMIN</td>
+
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div> <!-- /.card-body -->
+</div> <!-- /.card -->

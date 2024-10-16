@@ -1,0 +1,109 @@
+﻿@model List<ASM_ASPNETCORE.Models.Product>
+
+<!-- Categories Section Begin -->
+<section class="categories" style="margin-bottom: 10px">
+	<div class="container">
+		<div class="row">
+			<div class="categories__slider owl-carousel">
+				<div class="col-lg-3">
+					<div class="categories__item set-bg" data-setbg="../LayoutElectronic/img/categories/catdt-1.jpg">
+						<h5><a href="#">Laptop</a></h5>
+					</div>
+				</div>
+				<div class="col-lg-3">
+					<div class="categories__item set-bg" data-setbg="../LayoutElectronic/img/categories/catdt-2.jpg">
+						<h5><a href="#">Đồng hồ</a></h5>
+					</div>
+				</div>
+				<div class="col-lg-3">
+					<div class="categories__item set-bg" data-setbg="../LayoutElectronic/img/categories/catdt-3.jpg">
+						<h5><a href="#">Iphone 16 Promax</a></h5>
+					</div>
+				</div>
+				<div class="col-lg-3">
+					<div class="categories__item set-bg" data-setbg="../LayoutElectronic/img/categories/catdt-4.jpg">
+						<h5><a href="#">Xiaomi 14T</a></h5>
+					</div>
+				</div>
+				<div class="col-lg-3">
+					<div class="categories__item set-bg" data-setbg="../LayoutElectronic/img/categories/catdt-5.jpg">
+						<h5><a href="#">Galaxy Z Fold 6</a></h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Categories Section End -->
+
+<section class="featured spad">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="section-title">
+					<h2>Featured Product</h2>
+				</div>
+				<div class="featured__controls">
+					<ul>
+						<li class="active" data-filter="*">All</li>
+						<li data-filter=".oranges">Điện thoại</li>
+						<li data-filter=".fresh-meat">Đồng hồ</li>
+						<li data-filter=".vegetables">Tablet</li>
+						<li data-filter=".fastfood">Laptop</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="row featured__filter">
+			@foreach (var product in Model)
+			{
+				<div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
+
+					<div class="featured__item">
+						<div class="featured__item__pic set-bg"
+							 data-setbg="">
+							<img src="@product.HINH_SANPHAM" />
+							<ul class="featured__item__pic__hover">
+								<li>
+									<a href="#"><i class="fa fa-heart"></i></a>
+								</li>
+								<li>
+									<a asp-controller="Product" asp-action="Details" asp-route-maSP="@product.MA_SANPHAM"><i class="fa fa-retweet"></i></a>
+								</li>
+								<li>
+									<a asp-controller="ShoppingCart" asp-action="AddToCart" ><i class="fa fa-shopping-cart"></i></a>
+								</li>
+							</ul>
+						</div>
+						<div class="featured__item__text">
+							<h6><a href="#">@product.TEN_SANPHAM</a></h6>
+							<h5>@product.GIA_SANPHAM</h5>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</section>
+
+<script>
+	function addToCart(maSanPham) {
+		// Gửi yêu cầu AJAX để thêm sản phẩm vào giỏ hàng
+		$.ajax({
+			url: '@Url.Action("AddToCart", "Cart")', // Đường dẫn tới action trong controller
+			type: 'POST',
+			data: { maSanPham: maSanPham, soLuong: 1 }, // Số lượng mặc định là 1
+			success: function (response) {
+				if (response.success) {
+					alert('Sản phẩm đã được thêm vào giỏ hàng!'); // Thông báo thành công
+				} else {
+					alert('Có lỗi xảy ra, vui lòng thử lại.'); // Thông báo lỗi
+				}
+			},
+			error: function () {
+				alert('Có lỗi xảy ra, vui lòng thử lại.'); // Thông báo lỗi
+			}
+		});
+	}
+</script>

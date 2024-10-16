@@ -1,0 +1,182 @@
+﻿@model ASM_ASPNETCORE.Models.Product
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    /* Tổng quan CSS cho trang Admin */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f7f6;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1, h4 {
+        color: #4CAF50;
+    }
+
+    /* Thiết kế cho các phần tử form */
+    .form-group label {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .form-control {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s ease-in-out;
+    }
+
+        .form-control:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+        }
+
+    .text-danger {
+        color: #e74c3c;
+    }
+
+    .btn-primary {
+        background-color: #4CAF50;
+        border-color: #4CAF50;
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            background-color: #45a049;
+            border-color: #3e8e41;
+        }
+
+    /* Cải tiến layout */
+    .row {
+        margin: 20px 0;
+        width: 300px;
+    }
+
+    .col-md-4 {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    h4 {
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+    a {
+        color: #4CAF50;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<h1>Edit</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-area="Admin" asp-controller="Product" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="ID_SANPHAM" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Input fields with validation -->
+            <div class="form-group">
+                <label asp-for="ID_SANPHAM" class="control-label"></label>
+                <input asp-for="ID_SANPHAM" class="form-control" readonly />
+                <span asp-validation-for="ID_SANPHAM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MA_SANPHAM" class="control-label"></label>
+                <input asp-for="MA_SANPHAM" class="form-control" readonly />
+                <span asp-validation-for="MA_SANPHAM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TEN_SANPHAM" class="control-label"></label>
+                <input asp-for="TEN_SANPHAM" class="form-control" />
+                <span asp-validation-for="TEN_SANPHAM" class="text-danger"></span>
+            </div>
+            <!-- Hiển thị ảnh hiện tại -->
+            <div class="form-group">
+                <label class="control-label">Current Image</label>
+                @if (!string.IsNullOrEmpty(Model.HINH_SANPHAM))
+                {
+                    <div>
+                        <img src="@Url.Content("~/LayoutElectronic/" + Model.HINH_SANPHAM)" alt="Product Image" width="150" />
+                    </div>
+                }
+                else
+                {
+                    <div>No image available.</div>
+                }
+            </div>
+
+            <!-- Trường ảnh (tùy chọn, không bắt buộc) -->
+            <div class="form-group">
+                <label asp-for="HINH_SANPHAM" class="control-label">Product Image (Optional)</label>
+                <input asp-for="HINH_SANPHAM" type="file" class="form-control" />
+                <span asp-validation-for="HINH_SANPHAM" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="SOLUONG_SANPHAM" class="control-label"></label>
+                <input asp-for="SOLUONG_SANPHAM" class="form-control" />
+                <span asp-validation-for="SOLUONG_SANPHAM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GIA_SANPHAM" class="control-label"></label>
+                <input asp-for="GIA_SANPHAM" class="form-control" />
+                <span asp-validation-for="GIA_SANPHAM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TINHTRANG_SANPHAM" class="control-label"></label>
+                <input asp-for="TINHTRANG_SANPHAM" class="form-control" />
+                <span asp-validation-for="TINHTRANG_SANPHAM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MOTA_SANPHAM" class="control-label"></label>
+                <input asp-for="MOTA_SANPHAM" class="form-control" />
+                <span asp-validation-for="MOTA_SANPHAM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MA_ADMIN" class="control-label"></label>
+                <input asp-for="MA_ADMIN" class="form-control" />
+                <span asp-validation-for="MA_ADMIN" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}

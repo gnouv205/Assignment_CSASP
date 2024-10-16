@@ -1,0 +1,105 @@
+﻿@model List<ASM_ASPNETCORE.Models.Cart>
+
+<style>
+    /* Đặt kiểu cho bảng */
+    table {
+        width: 100%;
+        border-collapse: collapse; /* Loại bỏ khoảng cách giữa các ô */
+        margin-top: 20px; /* Khoảng cách từ trên xuống */
+        font-size: 14px; /* Kích thước font chữ nhỏ hơn */
+    }
+
+    /* Đặt kiểu cho các ô của bảng */
+    th, td {
+        border: 1px solid #dddddd; /* Đường viền xung quanh ô */
+        text-align: left; /* Căn trái nội dung trong ô */
+        padding: 8px; /* Khoảng cách bên trong ô */
+    }
+
+    /* Đặt kiểu cho hàng tiêu đề */
+    th {
+        background-color: #f2f2f2; /* Màu nền cho hàng tiêu đề */
+        font-weight: bold; /* Làm đậm chữ trong hàng tiêu đề */
+    }
+
+    /* Đặt kiểu cho hàng */
+    tr:nth-child(even) {
+        background-color: #f9f9f9; /* Màu nền cho các hàng chẵn */
+    }
+
+    tr:hover {
+        background-color: #f1f1f1; /* Màu nền khi di chuột qua hàng */
+    }
+
+    /* Đặt kiểu cho hình ảnh sản phẩm */
+    img {
+        max-width: 80px; /* Đặt chiều rộng tối đa cho hình ảnh */
+        height: auto; /* Đảm bảo tỷ lệ hình ảnh */
+    }
+
+    /* Đặt kiểu cho nút hành động */
+    .action-buttons {
+        display: flex; /* Hiển thị dưới dạng flexbox */
+        gap: 10px; /* Khoảng cách giữa các nút */
+    }
+
+    .button {
+        padding: 5px 10px; /* Khoảng cách bên trong nút */
+        background-color: #4CAF50; /* Màu nền xanh */
+        color: white; /* Màu chữ trắng */
+        border: none; /* Không có đường viền */
+        border-radius: 5px; /* Bo góc */
+        cursor: pointer; /* Con trỏ khi di chuột */
+    }
+
+        .button.delete {
+            background-color: #f44336; /* Màu nền đỏ cho nút xóa */
+        }
+
+</style>
+<h2>Giỏ hàng của bạn</h2>
+
+<table>
+    <thead>
+        <tr>
+
+            <th>Tên sản phẩm</th>
+            <th>Giá sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Hình sản phẩm</th>
+            <th>Hành động</th> <!-- Thêm cột hành động -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Ten_SanPham</td>
+                <td>@item.Gia_SanPham</td>
+                <td>@item.SoLuong_SanPham</td>
+                <td><img src="@item.Hinh_SanPham" alt="@item.Ten_SanPham" /></td>
+                <td>
+                    <div class="action-buttons">
+                        <button class="button" onclick="purchase('@item.Ma_SanPham')">Mua</button>
+                        <button class="button delete" onclick="remove('@item.Ma_SanPham')">Xóa</button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function purchase(maSanPham) {
+        // Xử lý hành động mua
+        alert('Mua sản phẩm: ' + maSanPham);
+        // Thêm mã xử lý mua ở đây
+    }
+
+    function remove(maSanPham) {
+        // Xử lý hành động xóa
+        alert('Xóa sản phẩm: ' + maSanPham);
+        // Thêm mã xử lý xóa ở đây
+    }
+</script>
+
